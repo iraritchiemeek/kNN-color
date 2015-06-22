@@ -25,3 +25,31 @@ Node.prototype.sortByDistance = function() {
 		return a.distance - b.distance
 	})
 };
+
+Node.prototype.guessType = function(k) {
+	var types = {};
+
+	for (var i in this.neighbors.slice(0, k)) {
+		var neighbor = neighbors[i]
+
+		if (!types[neighbor.type]){
+			types[neighbor.type] = 0
+		}
+
+		types[neighbor.type] += 1
+	}
+
+	var guess = {type: false, count: 0}
+	for (var type in types) {
+		if (types[type] > guess.count) {
+			guess.type = type
+			guess.count = types[type]
+		}
+	}
+
+	this.guess = guess
+
+	return types
+
+};
+
