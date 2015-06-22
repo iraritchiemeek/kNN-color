@@ -19,3 +19,9 @@ Node.prototype.measureDistances = function(area_range_obj, rooms_range_obj) {
 		neighbor.distance = Math.sqrt(delta_rooms * delta_rooms + delta_area * delta_area)
 	})
 };
+
+Node.prototype.sortByDistance = function() {
+	this.neighbors.sort(function(a,b){
+		return a.distance - b.distance
+	})
+};
