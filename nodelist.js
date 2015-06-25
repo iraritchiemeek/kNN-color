@@ -31,6 +31,16 @@ NodeList.prototype.calculateRanges = function() {
 	this.rooms = {min: 1000000, max: 0}
 
 	$.each(this.nodes, function(node, index){
+		if (node.rooms) < this.rooms.min {
+			this.rooms.min = node.rooms
+		} else if (node.rooms > this.rooms.max) {
+			this.rooms.max = node.rooms
+		}
 
+		if (node.areas) < this.areas.min {
+			this.areas.min = node.areas
+		} else if (node.areas > this.areas.max) {
+			this.areas.max = node.areas
+		}
 	})
 };
